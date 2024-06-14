@@ -32,25 +32,40 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        
+
         setContent {
             var counter by remember {
                 mutableIntStateOf(0)
             }
             CounterTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Column(modifier = Modifier.padding(innerPadding), horizontalAlignment = Alignment.CenterHorizontally) {
+                    Column(
+                        modifier = Modifier.padding(innerPadding),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
 
-                        Row(horizontalArrangement = Arrangement.SpaceAround, modifier = Modifier.fillMaxWidth()) {
-                            Button(modifier = Modifier.weight(1f).padding(5.dp), onClick = { counter += 1 }) {
+                        Text(text = counter.toString(), fontSize = 32.sp)
+                        Row(
+                            horizontalArrangement = Arrangement.SpaceAround,
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Button(
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(5.dp),
+                                onClick = { counter += 1 }) {
                                 Text(text = "+", fontSize = 24.sp)
                             }
-                            Button(modifier = Modifier.weight(1f).padding(5.dp), onClick = { counter -= 1 }) {
+                            Button(
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(5.dp),
+                                onClick = { counter -= 1 }) {
                                 Text(text = "-", fontSize = 24.sp)
                             }
                         }
-                        
-                        Text(text = counter.toString(), fontSize = 32.sp)
+
+
                     }
                 }
             }
